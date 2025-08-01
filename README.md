@@ -68,5 +68,5 @@ MIT
 ## Support
 
 If you encounter any issues or have suggestions:
-1. Check the [Issues](../../issues) page for existing reports
+1. Check the [Issues](https://github.com/jeanmajid/VSCE-mcStructure-editor/issues) page for existing reports
 2. Create a new issue with detailed information about the problem

@@ -1,70 +1,83 @@
 {
-  "name": "mcstructure-editor",
-  "displayName": "Minecraft Structure Editor",
-  "description": "Edit .mcstructure files as human-readable JSON",
-  "version": "0.0.1",
-  "engines": {
-    "vscode": "^1.22.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "main": "./out/extension.js",
-  "contributes": {
-    "customEditors": [
-      {
-        "viewType": "mcstructure-editor.editor",
-        "displayName": "MCStructure Editor",
-        "selector": [
-          {
-            "filenamePattern": "*.mcstructure"
-          }
+    "name": "mcstructure-editor",
+    "displayName": "Minecraft Structure Editor",
+    "description": "Edit .mcstructure files as human-readable JSON",
+    "version": "0.0.1",
+    "publisher": "jeanmajid",
+    "icon": "images/logo.jpg",
+    "engines": {
+        "vscode": "^1.22.0"
+    },
+    "repository": {
+        "url": "https://github.com/jeanmajid/VSCE-mcStructure-editor"
+    },
+    "bugs": {
+        "url": "https://github.com/jeanmajid/VSCE-mcStructure-editor/issues"
+    },
+    "keywords": [
+        "mcpe",
+        "minecraft bedrock",
+        "mcstructure"
+    ],
+    "categories": [
+        "Other"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "customEditors": [
+            {
+                "viewType": "mcstructure-editor.editor",
+                "displayName": "MCStructure Editor",
+                "selector": [
+                    {
+                        "filenamePattern": "*.mcstructure"
+                    }
+                ],
+                "priority": "default"
+            }
         ],
-        "priority": "default"
-      }
-    ],
-    "commands": [
-      {
-        "command": "mcstructure-editor.openAsJson",
-        "title": "Open MCStructure as JSON",
-        "category": "MCStructure",
-        "icon": "$(file-code)"
-      },
-      {
-        "command": "mcstructure-editor.saveAsStructure",
-        "title": "Save as MCStructure",
-        "category": "MCStructure",
-        "icon": "$(save)"
-      }
-    ],
-    "menus": {
-      "explorer/context": [
-        {
-          "command": "mcstructure-editor.openAsJson",
-          "when": "resourceExtname === '.mcstructure'",
-          "group": "1_modification"
+        "commands": [
+            {
+                "command": "mcstructure-editor.openAsJson",
+                "title": "Open MCStructure as JSON",
+                "category": "MCStructure",
+                "icon": "$(file-code)"
+            },
+            {
+                "command": "mcstructure-editor.saveAsStructure",
+                "title": "Save as MCStructure",
+                "category": "MCStructure",
+                "icon": "$(save)"
+            }
+        ],
+        "menus": {
+            "explorer/context": [
+                {
+                    "command": "mcstructure-editor.openAsJson",
+                    "when": "resourceExtname === '.mcstructure'",
+                    "group": "1_modification"
+                }
+            ],
+            "editor/title": [
+                {
+                    "command": "mcstructure-editor.saveAsStructure",
+                    "when": "mcstructure-editor.isActive",
+                    "group": "navigation"
+                }
+            ]
         }
-      ],
-      "editor/title": [
-        {
-          "command": "mcstructure-editor.saveAsStructure",
-          "when": "mcstructure-editor.isActive",
-          "group": "navigation"
-        }
-      ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc",
+        "watch": "tsc -watch"
+    },
+    "devDependencies": {
+        "@types/node": "16.x",
+        "@types/vscode": "^1.74.0",
+        "typescript": "^4.9.4"
+    },
+    "dependencies": {
+        "prismarine-nbt": "^2.7.0"
     }
-  },
-  "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc",
-    "watch": "tsc -watch"
-  },
-  "devDependencies": {
-    "@types/node": "16.x",
-    "@types/vscode": "^1.74.0",
-    "typescript": "^4.9.4"
-  },
-  "dependencies": {
-    "prismarine-nbt": "^2.7.0"
-  }
 }
