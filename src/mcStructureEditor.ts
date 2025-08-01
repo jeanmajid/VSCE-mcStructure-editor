@@ -19,6 +19,11 @@ export class McStructureConverter {
                 language: "json",
             });
 
+            await vscode.window.showTextDocument(doc, {
+                preview: false,
+                viewColumn: vscode.ViewColumn.Active,
+            });
+
             vscode.commands.executeCommand("setContext", "mcstructure-editor.isActive", true);
 
             this.setOriginalFilePath(doc, uri.fsPath);
